@@ -30,6 +30,7 @@ class BeesBlogPopularPosts extends Module
 {
     /**
      * BeesBlogPopularPosts constructor.
+     * @throws PrestaShopException
      */
     public function __construct()
     {
@@ -50,10 +51,29 @@ class BeesBlogPopularPosts extends Module
     }
 
     /**
+     * Installs module
+     * @return bool
+     * @throws PrestaShopDatabaseException
+     * @throws PrestaShopException
+     * @throws Adapter_Exception
+     */
+    public function install()
+    {
+        return (
+            parent::install() &&
+            $this->registerHook('displayLeftColumn') &&
+            $this->registerHook('displayHome') &&
+            $this->registerHook('displayFooterProduct')
+        );
+    }
+
+    /**
      * Display in left column
      *
      * @return string
      *
+     * @throws PrestaShopException
+     * @throws SmartyException
      * @since 1.0.0
      */
     public function hookDisplayLeftColumn()
@@ -82,18 +102,23 @@ class BeesBlogPopularPosts extends Module
      *
      * @return string
      *
+     * @throws PrestaShopException
+     * @throws SmartyException
      * @since 1.0.0
      */
     public function hookDisplayRightColumn()
     {
         return $this->hookDisplayLeftColumn();
     }
+
     /**
      * Display in home page
      *
      * @return string
      *
-     * @since 1.0.3
+     * @throws PrestaShopException
+     * @throws SmartyException
+     * @since 1.0.0
      */
     public function hookDisplayHome()
     {
@@ -115,14 +140,17 @@ class BeesBlogPopularPosts extends Module
 
         return $this->display(__FILE__, 'views/templates/hooks/home.tpl');
     }
+
     /**
      * Display in product page
      *
      * @return string
      *
-     * @since 1.0.3
+     * @throws PrestaShopException
+     * @throws SmartyException
+     * @since 1.0.1
      */
-    public function hookProductFooter()
+    public function hookDisplayFooterProduct()
     {
         if (!Module::isEnabled('beesblog')) {
             return '';
