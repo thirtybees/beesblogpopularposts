@@ -84,8 +84,8 @@ class BeesBlogPopularPosts extends Module
 
         $popularPosts = BeesBlogPost::getPopularPosts($this->context->language->id, 0, 5);
         if (is_array($popularPosts)) {
-            foreach ($popularPosts as &$recentPost) {
-                $recentPost->link = BeesBlog::GetBeesBlogLink('beesblog_post', ['blog_rewrite' => $recentPost->link_rewrite]);
+            foreach ($popularPosts as &$post) {
+                $post->link = BeesBlog::GetBeesBlogLink('beesblog_post', ['blog_rewrite' => $post->link_rewrite]);
             }
         }
 
@@ -128,8 +128,8 @@ class BeesBlogPopularPosts extends Module
 
         $popularPosts = BeesBlogPost::getPopularPosts($this->context->language->id, 0, 4);
         if (is_array($popularPosts)) {
-            foreach ($popularPosts as &$recentPost) {
-                $recentPost->link = BeesBlog::GetBeesBlogLink('beesblog_post', ['blog_rewrite' => $recentPost->link_rewrite]);
+            foreach ($popularPosts as &$post) {
+                $post->link = BeesBlog::GetBeesBlogLink('beesblog_post', ['blog_rewrite' => $post->link_rewrite]);
             }
         }
 
@@ -158,8 +158,8 @@ class BeesBlogPopularPosts extends Module
 
         $popularPosts = BeesBlogPost::getPopularPosts($this->context->language->id, 0, 4);
         if (is_array($popularPosts)) {
-            foreach ($popularPosts as &$recentPost) {
-                $recentPost->link = BeesBlog::GetBeesBlogLink('beesblog_post', ['blog_rewrite' => $recentPost->link_rewrite]);
+            foreach ($popularPosts as &$post) {
+                $post->link = BeesBlog::GetBeesBlogLink('beesblog_post', ['blog_rewrite' => $post->link_rewrite]);
             }
         }
 
