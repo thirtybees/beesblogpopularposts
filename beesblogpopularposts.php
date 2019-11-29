@@ -44,6 +44,9 @@ class BeesBlogPopularPosts extends Module
         $this->displayName = $this->l('Bees Blog Popular Posts');
         $this->description = $this->l('thirty bees blog popular posts widget');
         $this->dependencies  = ['beesblog'];
+        $this->need_instance = false;
+        $this->tb_versions_compliancy = '>= 1.0.0';
+        $this->tb_min_version = '1.0.0';
     }
 
     /**
