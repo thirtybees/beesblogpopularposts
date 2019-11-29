@@ -34,6 +34,10 @@
                                            href="{$post->link|escape:'htmlall':'UTF-8'}"
                                            title="{$post->title|escape:'htmlall':'UTF-8'}">
                                             {$post->title|truncate:'20'|escape:'htmlall':'UTF-8'}
+                                            {assign var=imagePath value=Media::getMediaPath(BeesBlog::getPostImagePath($post->id))}
+                                            {if ($imagePath)}
+                                                <img class="img-responsive" src="{$imagePath|escape:'htmlall':'UTF-8'}" title="{$post->title|escape:'htmlall':'UTF-8'}" />
+                                            {/if}
                                         </a>
                                     </h5>
                             <span>
