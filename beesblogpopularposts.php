@@ -52,10 +52,10 @@ class BeesBlogPopularPosts extends Module
 
     /**
      * Installs module
+     *
      * @return bool
      * @throws PrestaShopDatabaseException
      * @throws PrestaShopException
-     * @throws Adapter_Exception
      */
     public function install()
     {
@@ -82,15 +82,8 @@ class BeesBlogPopularPosts extends Module
             return '';
         }
 
-        $popularPosts = BeesBlogPost::getPopularPosts($this->context->language->id, 0, 5);
-        if (is_array($popularPosts)) {
-            foreach ($popularPosts as &$post) {
-                $post->link = BeesBlog::GetBeesBlogLink('beesblog_post', ['blog_rewrite' => $post->link_rewrite]);
-            }
-        }
-
         $this->context->smarty->assign([
-            'beesblogPopularPostsPosts' => $popularPosts,
+            'beesblogPopularPostsPosts' => BeesBlogPost::getPopularPosts($this->context->language->id, 0, 5),
             'beesblogPopularPostsBlogUrl' => BeesBlog::getBeesBlogLink(),
         ]);
 
@@ -126,15 +119,8 @@ class BeesBlogPopularPosts extends Module
             return '';
         }
 
-        $popularPosts = BeesBlogPost::getPopularPosts($this->context->language->id, 0, 4);
-        if (is_array($popularPosts)) {
-            foreach ($popularPosts as &$post) {
-                $post->link = BeesBlog::GetBeesBlogLink('beesblog_post', ['blog_rewrite' => $post->link_rewrite]);
-            }
-        }
-
         $this->context->smarty->assign([
-            'beesblogPopularPostsPosts' => $popularPosts,
+            'beesblogPopularPostsPosts' => BeesBlogPost::getPopularPosts($this->context->language->id, 0, 4),
             'beesblogPopularPostsBlogUrl' => BeesBlog::getBeesBlogLink(),
         ]);
 
@@ -156,15 +142,8 @@ class BeesBlogPopularPosts extends Module
             return '';
         }
 
-        $popularPosts = BeesBlogPost::getPopularPosts($this->context->language->id, 0, 4);
-        if (is_array($popularPosts)) {
-            foreach ($popularPosts as &$post) {
-                $post->link = BeesBlog::GetBeesBlogLink('beesblog_post', ['blog_rewrite' => $post->link_rewrite]);
-            }
-        }
-
         $this->context->smarty->assign([
-            'beesblogPopularPostsPosts' => $popularPosts,
+            'beesblogPopularPostsPosts' => BeesBlogPost::getPopularPosts($this->context->language->id, 0, 4),
             'beesblogPopularPostsBlogUrl' => BeesBlog::getBeesBlogLink(),
         ]);
 
